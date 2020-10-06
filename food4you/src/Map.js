@@ -4,7 +4,7 @@ function Map() {
    
     return (
         <div>
-        <h1>Food for you maps</h1>
+        <h1>Food for you map</h1>
         </div>
     );
         
