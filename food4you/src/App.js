@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import {BrowserRouter, Route} from "react-router-dom";
+import Map from "./Map";
+import Location from "./Location";
 
 function App() {
-  const [location, setLocation] = useState("");
-  const [headingText, setHeading] = useState("");
-
-  function handleChange(event) {
-    console.log(event.target.value);
-    setLocation(event.target.value);
-  }
-
-  function handleClick(event) {
-    setHeading(location);
-
-    event.preventDefault();
-  }
-
-  return (
-    <div className="container">
-      <h1>My Location</h1>
-      <form onSubmit={handleClick}>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="Where's your location?"
-          value={location}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <br />
-      <h2>{headingText}</h2>
-    </div>
+  return ( 
+    <BrowserRouter>
+      <div>
+        <Route exact path = "/" component = {Location} />
+        <Route path = "/Map" component = {Map} />
+      </div>
+    </BrowserRouter>
   );
 }
+
 
 export default App;
