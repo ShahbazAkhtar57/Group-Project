@@ -1,11 +1,11 @@
 import React from "react";
 
-function Restaurent() {
+function Restaurant() {
     return (<div className = "locinfo">
        
         <div class="left">
             <h1>Restaurant Information:</h1>
-            <h2 style={{textAlign:"left"}}>Restaurent Location: </h2>
+            <h2 style={{textAlign:"left"}}>Restaurant Location: </h2>
         </div>
 
         <div class="middle">
@@ -19,4 +19,4 @@ function Restaurent() {
     </div>);
 }
 
-export default Restaurent;
+export default Restaurant;

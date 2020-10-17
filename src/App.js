@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
-import Map from "./NewMap";
+import MapPage from "./MapPage";
 import Location from "./NewLocation";
 
 
@@ -10,7 +10,7 @@ function App() {
     <Router>
         <Switch>
         <Route exact path = "/" component = {Location} />
-        <Route path = "/Map" component = {Map} />
+        <Route path = "/Map" component = {MapPage} />
       </Switch>
     </Router>
   );
