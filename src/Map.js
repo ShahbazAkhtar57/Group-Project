@@ -54,33 +54,6 @@ export default class Map extends Component
     }
 
 
-
-
-
-//Tadded
-  onMarkerDragEnd = ( event ) => {
-    let newLat = event.latLng.lat(),
-        newLng = event.latLng.lng();
-        Geocode.fromAddress(this.props.param).then(
-        response => {
-          let { newlat,newlng } = response.results[0].geometry.location;
-          let name = response.results[0].formatted_address;
-          this.setState( {
-            mapPosition: {newlat, newlng},
-            markerPosition: {newlat, newlng},
-            
-          })
-        },
-        error => {
-          console.error(error);
-        }
-      )
-        } 
-      
-
-//tadded
-
-
     shouldComponentUpdate(nextProps, nextState) {
       if ( this.state.mapPosition !== nextState.mapPosition)
       {
@@ -91,9 +64,6 @@ export default class Map extends Component
       }
     }
 
-
-
-
     render() {
       const AsyncMap = withScriptjs(
         withGoogleMap(
@@ -103,28 +73,12 @@ export default class Map extends Component
             defaultZoom={this.props.zoom}
             defaultCenter={{lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng}}>
 
-
-
-
               <Marker
                   name={'City Hall, NYC'}
                   position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
                 <InfoWindow>
                 <div style={{color:"black"}}>
 								{/*this.props.param*/} {this.state.address}
-
-
-              <Marker 
-                  name={'City Hall, NYC'}
-                  draggable={true}//toyin added this
-                   ondDragEnd={this.onMarkerDragEnd}//toyin added this
-                  position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
-                 
-                <InfoWindow>
-                <div style={{color:"black"}}>
-								{this.props.param} {this.state.address}
-
-
 							  </div>
                 </InfoWindow>       
               </Marker>
