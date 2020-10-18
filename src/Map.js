@@ -75,6 +75,7 @@ export default class Map extends Component
 
               <Marker
                   name={'City Hall, NYC'}
+                  draggable={true}//toyin added this
                   position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
                 <InfoWindow>
                 <div style={{color:"black"}}>
