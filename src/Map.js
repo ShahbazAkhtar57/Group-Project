@@ -52,6 +52,10 @@ export default class Map extends Component
         }
       )
     }
+
+
+
+
 //Tadded
   onMarkerDragEnd = ( event ) => {
     let newLat = event.latLng.lat(),
@@ -74,6 +78,7 @@ export default class Map extends Component
       
 
 //tadded
+
     shouldComponentUpdate(nextProps, nextState) {
       if ( this.state.mapPosition !== nextState.mapPosition)
       {
@@ -94,6 +99,14 @@ export default class Map extends Component
             defaultZoom={this.props.zoom}
             defaultCenter={{lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng}}>
 
+
+              <Marker
+                  name={'City Hall, NYC'}
+                  position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
+                <InfoWindow>
+                <div style={{color:"black"}}>
+								{/*this.props.param*/} {this.state.address}
+
               <Marker 
                   name={'City Hall, NYC'}
                   draggable={true}//toyin added this
@@ -103,6 +116,7 @@ export default class Map extends Component
                 <InfoWindow>
                 <div style={{color:"black"}}>
 								{this.props.param} {this.state.address}
+
 							  </div>
                 </InfoWindow>       
               </Marker>

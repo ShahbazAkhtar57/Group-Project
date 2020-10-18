@@ -1,3 +1,16 @@
+
+export default
+[
+    {
+        "featureType": "administrative.country",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#ff0000"
+
 export default[
     {
         "featureType": "all",
@@ -227,6 +240,7 @@ export default[
         "stylers": [
             {
                 "lightness": -20
+
             }
         ]
     }
