@@ -28,21 +28,15 @@ body {
 }
 
 .left {
-  width:30%; 
+  width:50%; 
   height:100%;
   background:#dba84a;
   flex:none;
 }
-.middle{
-  width: auto;
-  height: 100%;
-  background: rgb(44, 147, 173);
-  flex:1;
-}
 
 .right{
   height:100%;
-  width: 30%;
+  width: 50%;
   background:green;
   flex:none;        
 }
@@ -126,14 +120,6 @@ nav li a:hover {
   color: #50a3a2;
 }
 
-.display-map {
-  
-  border-radius: 50%;
-  
-  
-  position: center;
-    
-}
 
 
 input {
