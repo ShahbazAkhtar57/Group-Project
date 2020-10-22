@@ -196,12 +196,12 @@ onMarkerDragEnd=(event)=>
           {map}
 
 		  <div className = "container"> 
-                  <h1>Interested Resaurant</h1>
+                  <h1>Interested Restaurant</h1>
                   <form>
                       <input
                           onChange={this.handleChange}
                           type="text"
-                          placeholder="Resraurant Location"
+                          placeholder="Restaurant Location"
                           Value={this.state.resLoc}
                         />
                         <button onClick={this.getDetails}>Get More Details</button>
