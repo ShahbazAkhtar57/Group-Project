@@ -53,7 +53,7 @@ export default class Map extends Component
         }
       )
     }
-    //tt starts
+ 
 
 onMarkerDragEnd=(event)=>
 {
@@ -82,10 +82,6 @@ onMarkerDragEnd=(event)=>
             }
         );
     };
-
-
-//tt ends
-
 
     shouldComponentUpdate(nextProps, nextState) {
       if ( this.state.mapPosition !== nextState.mapPosition)
