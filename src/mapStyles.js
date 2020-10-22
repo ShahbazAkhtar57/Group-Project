@@ -19,7 +19,7 @@ export default
         ]
     },
     {
-        "featureType": "poi.business",
+        "featureType": "landscape",
         "elementType": "all",
         "stylers": [
             {
@@ -28,8 +28,8 @@ export default
         ]
     },
     {
-        "featureType": "poi.business",
-        "elementType": "geometry.fill",
+        "featureType": "landscape.natural",
+        "elementType": "all",
         "stylers": [
             {
                 "visibility": "on"
@@ -37,56 +37,29 @@ export default
         ]
     },
     {
-        "featureType": "poi.business",
-        "elementType": "geometry.stroke",
+        "featureType": "poi",
+        "elementType": "all",
         "stylers": [
             {
-                "visibility": "on"
+                "visibility": "off"
             }
         ]
     },
     {
-        "featureType": "poi.business",
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.business",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.business",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.business",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.business",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "on"
+                "visibility": "off"
             }
         ]
     },
@@ -100,7 +73,16 @@ export default
         ]
     },
     {
-        "featureType": "road.highway",
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
         "elementType": "all",
         "stylers": [
             {
@@ -109,7 +91,7 @@ export default
         ]
     },
     {
-        "featureType": "road.arterial",
+        "featureType": "poi.business.food_and_drink",
         "elementType": "all",
         "stylers": [
             {
@@ -118,7 +100,7 @@ export default
         ]
     },
     {
-        "featureType": "road.local",
+        "featureType": "road",
         "elementType": "all",
         "stylers": [
             {
@@ -127,34 +109,7 @@ export default
         ]
     },
     {
-        "featureType": "transit.line",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.station.airport",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.station.bus",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit.station.rail",
+        "featureType": "transit",
         "elementType": "all",
         "stylers": [
             {
