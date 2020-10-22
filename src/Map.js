@@ -25,6 +25,7 @@ export default class Map extends Component
         this.state = {
             param:this.props.param,
             address: "",
+	    resLoc: "",
             mapPosition: {
               lat: this.props.center.lat,
               lng: this.props.center.lng
@@ -136,6 +137,18 @@ onMarkerDragEnd=(event)=>
       }
     }
 
+    handleChange = (event) => {
+      console.log(event.target.value);
+      this.setState({ 
+        resLoc: event.target.value});
+    }
+
+    getDetails = (e) => {
+      e.preventDefault();
+      console.log("New resLocation", this.state.resLoc);
+    }
+
+
     render() {
       const AsyncMap = withScriptjs(
         withGoogleMap(
@@ -181,6 +194,21 @@ onMarkerDragEnd=(event)=>
              </ul>
            </nav>
           {map}
+
+		  <div className = "container"> 
+                  <h1>Interested Resaurant</h1>
+                  <form>
+                      <input
+                          onChange={this.handleChange}
+                          type="text"
+                          placeholder="Resraurant Location"
+                          Value={this.state.resLoc}
+                        />
+                        <button onClick={this.getDetails}>Get More Details</button>
+                  </form>
+                 
+            </div>
+
           <Restaurant />
         </div>
       )
