@@ -23,6 +23,8 @@ function Restaurant() {
 
         <div className="right">
             <h1>Review/s:</h1>
+            <hr></hr>
+            <br></br>
         </div>
 
     </div>);
