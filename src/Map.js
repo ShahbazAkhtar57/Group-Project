@@ -10,11 +10,19 @@ Geocode.enableDebug();
 let radius = 1600;
 let category = "Food"
 
+/*
+    Map Size
+*/
+
 const mapContainerStyle = {
   width: "100%",
   height: "800px",
   margin: "30px auto"
 };
+
+/*
+  Map Options
+*/
 
 const options = {
   styles: mapStyles,
@@ -24,6 +32,7 @@ const options = {
 
 export default class Map extends Component 
 {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +50,16 @@ export default class Map extends Component
       }
   }
 
+    /*
+        Runs when Map is loaded
+    */
+
     componentDidMount() {
+
+      /*
+          Updates the Map based on user's input by Geocoding
+      */
+
       Geocode.fromAddress(this.props.param).then(
         response => {
           let { lat,lng } = response.results[0].geometry.location;
@@ -51,19 +69,39 @@ export default class Map extends Component
             markerPosition: {lat, lng},
             address: name
           })
+
+          /*
+              After updating the Map, obtain the 5 nearby food locations based on the user's location
+          */
+
           let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=5&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
           axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
             },
             })
+
+            /*
+                Obtain Yelp API data
+            */
+
             .then((res) => {
               console.log(res.data)
             })
+
+            /*
+                If there is an error in Yelp API
+            */
+           
             .catch((err) => {
               console.log ('Restaurant Search Error')
             })
         },
+
+        /*
+            If there is an error in Geocode API
+        */
+
         error => {
           console.error(error);
         }
@@ -97,6 +135,12 @@ onMarkerDragEnd=(event)=>
     };
 
     shouldComponentUpdate(nextProps, nextState) {
+
+      /*
+          When the user enters a location, update the Map by re-rendering
+          else do nothing 
+      */
+
       if ( this.state.mapPosition !== nextState.mapPosition)
       {
         return true
@@ -116,6 +160,10 @@ onMarkerDragEnd=(event)=>
       e.preventDefault();
       console.log("New resLocation", this.state.resLoc);
     }
+
+    /*
+        Renders the Map with the options provided
+    */
 
     render() {
       const AsyncMap = withScriptjs(
@@ -140,6 +188,11 @@ onMarkerDragEnd=(event)=>
           )
         )
       );
+
+      /*
+          Load Google Maps using Google Maps API key and using a map style
+      */
+
       let map;
       if( this.props.center.lat !== undefined ) 
       {
