@@ -15,13 +15,13 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/food.png");
 }
 
-.locinfo{
+.locinfo {
  
   display: flex;
   border: 6px solid #eee; 
   border-radius: 0.6rem; 
-  width:90%;
-  height:400px;
+  width:50%;
+  height:600px;
   margin: 50px auto;
   text-align: center;
 
@@ -32,6 +32,50 @@ body {
   height:100%;
   background:#dba84a;
   flex:none;
+}
+
+.resList {
+  display: flex;
+  border: 6px solid #eee; 
+  border-radius: 0.6rem; 
+  width:80%;
+  height:400px;
+  margin: 100px auto;
+  text-align: center;
+
+}
+
+.list {
+  width:50%; 
+  height:100%;
+  background:#dba84a;
+  flex:none;
+  
+}
+
+.list li {
+  list-style: none;
+  font-size:1.25rem;
+ 
+}
+
+.bts-more {
+  width:70px;
+  height:35px;
+ 
+}
+
+.details {
+  height:100%;
+  width: 50%;
+  background:green;
+  flex:none;    
+  overflow:auto;
+}
+
+.details li {
+  list-style: none;
+  text-align: left;
 }
 
 .right{

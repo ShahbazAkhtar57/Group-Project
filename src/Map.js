@@ -3,8 +3,12 @@ import Restaurant from "./restaurant";
 import Geocode from "react-geocode"
 import mapStyles from "./mapStyles";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
+import axios from "axios";
 Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
 Geocode.enableDebug();
+
+let radius = 1600;
+let category = "Food"
 
 const mapContainerStyle = {
   width: "100%",
@@ -25,7 +29,7 @@ export default class Map extends Component
         this.state = {
             param:this.props.param,
             address: "",
-	    resLoc: "",
+	          resLoc: "",
             mapPosition: {
               lat: this.props.center.lat,
               lng: this.props.center.lng
@@ -34,8 +38,8 @@ export default class Map extends Component
               lat: this.props.center.lat,
               lng: this.props.center.lng
             },
-        }
-    }
+      }
+  }
 
     componentDidMount() {
       Geocode.fromAddress(this.props.param).then(
@@ -47,6 +51,18 @@ export default class Map extends Component
             markerPosition: {lat, lng},
             address: name
           })
+          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=5&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+          axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
+            },
+            })
+            .then((res) => {
+              console.log(res.data)
+            })
+            .catch((err) => {
+              console.log ('Restaurant Search Error')
+            })
         },
         error => {
           console.error(error);
@@ -54,7 +70,6 @@ export default class Map extends Component
       )
     }
  
-
 onMarkerDragEnd=(event)=>
 {
      let newLat = event.latLng.lat(),
@@ -63,10 +78,8 @@ onMarkerDragEnd=(event)=>
         Geocode.fromLatLng(newLat, newLng).then(
             response => {
                 const address = response.results[0].formatted_address;
-                  
                 this.setState({
                    address: (address) ? address : '',
-                 
                     markerPosition: {
                         lat: newLat,
                         lng: newLng
@@ -104,7 +117,6 @@ onMarkerDragEnd=(event)=>
       console.log("New resLocation", this.state.resLoc);
     }
 
-
     render() {
       const AsyncMap = withScriptjs(
         withGoogleMap(
@@ -113,15 +125,14 @@ onMarkerDragEnd=(event)=>
             options={options}
             defaultZoom={this.props.zoom}
             defaultCenter={{lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng}}>
-
               <Marker
-                  name={'City Hall, NYC'}
+                  name={'Default Marker'}
                   draggable={true}
                   onDragEnd={this.onMarkerDragEnd}
                   position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
                 <InfoWindow>
                 <div style={{color:"black"}}>
-								{/*this.props.param*/} {this.state.address}
+							   {this.state.address}
 							  </div>
                 </InfoWindow>       
               </Marker>
@@ -143,6 +154,7 @@ onMarkerDragEnd=(event)=>
       }
       return (
         <div>
+
           <nav>
              <ul>
                <li><a href = "/">Food4You</a></li>
@@ -151,21 +163,83 @@ onMarkerDragEnd=(event)=>
            </nav>
           {map}
 
-		  <div className = "container"> 
-                  <h1>Interested Restaurant</h1>
-                  <form>
-                      <input
-                          onChange={this.handleChange}
-                          type="text"
-                          placeholder="Restaurant Location"
-                          Value={this.state.resLoc}
-                        />
-                        <button onClick={this.getDetails}>Get More Details</button>
-                  </form>
-                 
-            </div>
+          <div className = "resList">
+            <div className = "list">
+              <h1>Restaurant List</h1>
+             
+              <ul>
+                <li>restaurant1</li>
+                <li>location1</li>
+              </ul>
+              <br></br>
+              <ul>
 
-          <Restaurant />
+                <li>restaurant2</li>
+                <li> location2</li>
+              </ul>
+              <br></br>
+              <ul>
+                <li>restaurant3</li>
+                <li> location3</li>
+              </ul>
+              <br></br>
+              <ul>
+                <li>restaurant4</li>
+                <li> location4</li>
+              </ul>
+              <br></br>
+              <ul>
+                <li>restaurant5</li>
+                <li> location5</li>
+              </ul>
+             
+            </div>
+            <div className="details">
+            <h1>Restaurant Information:</h1>
+              <hr></hr>
+              <ul>
+                <li>restaurant1</li>
+                <li>Phone Number: </li>
+                <li>Rating: </li>
+                <li>Price:</li>
+                <li>Reviews:</li>
+              </ul>
+              <hr></hr>
+              <ul>
+                <li>restaurant2</li>
+                <li>Phone Number: </li>
+                <li>Rating: </li>
+                <li>Price:</li>
+                <li>Reviews:</li>
+              </ul>
+              <hr></hr>
+              <ul>
+                <li>restaurant3</li>
+                <li>Phone Number: </li>
+                <li>Rating: </li>
+                <li>Price:</li>
+                <li>Reviews:</li>
+              </ul>
+              <hr></hr>
+              <ul>
+                <li>restaurant4</li>
+                <li>Phone Number: </li>
+                <li>Rating: </li>
+                <li>Price:</li>
+                <li>Reviews:</li>
+              </ul>
+              <hr></hr>
+              <ul>
+                <li>restaurant5</li>
+                <li>Phone Number: </li>
+                <li>Rating: </li>
+                <li>Price:</li>
+                <li>Reviews:</li>
+              </ul>
+            </div>
+          </div>
+		  
+          {/* <Restaurant /> */}
         </div>
       )
   }
