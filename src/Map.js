@@ -210,6 +210,7 @@ onMarkerDragEnd=(event)=>
           <div className = "resList">
             <div className = "list">
               <h1>Restaurant List</h1>
+	      <hr></hr>
   	       <ul>
                 {
                   this.state.list.map((value,key) => {
