@@ -73,7 +73,7 @@ export default class Map extends Component
               After updating the Map, obtain the 5 nearby food locations based on the user's location
           */
 
-          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=5&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
           axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
