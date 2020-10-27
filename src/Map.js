@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-import Restaurant from "./restaurant";
 import Geocode from "react-geocode"
 import mapStyles from "./mapStyles";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
@@ -38,7 +37,7 @@ export default class Map extends Component
         this.state = {
             param:this.props.param,
             address: "",
-	          resLoc: "",
+	    list:[],
             mapPosition: {
               lat: this.props.center.lat,
               lng: this.props.center.lng
@@ -87,6 +86,9 @@ export default class Map extends Component
 
             .then((res) => {
               console.log(res.data)
+	      this.setState({
+                list:res.data.businesses
+                })
             })
 
             /*
@@ -141,24 +143,13 @@ onMarkerDragEnd=(event)=>
           else do nothing 
       */
 
-      if ( this.state.mapPosition !== nextState.mapPosition)
+      if ( this.state.mapPosition !== nextState.mapPosition  || this.state.list !== nextState.list)
       {
         return true
       } else if ( this.state.mapPosition === nextState.mapPosition)
       {
         return false
       }
-    }
-
-    handleChange = (event) => {
-      console.log(event.target.value);
-      this.setState({ 
-        resLoc: event.target.value});
-    }
-
-    getDetails = (e) => {
-      e.preventDefault();
-      console.log("New resLocation", this.state.resLoc);
     }
 
     /*
@@ -219,80 +210,44 @@ onMarkerDragEnd=(event)=>
           <div className = "resList">
             <div className = "list">
               <h1>Restaurant List</h1>
-             
-              <ul>
-                <li>restaurant1</li>
-                <li>location1</li>
-              </ul>
-              <br></br>
-              <ul>
+  	       <ul>
+                {
+                  this.state.list.map((value,key) => {
+                    return<div>
+                      <li key={key}>{value.name}</li>
 
-                <li>restaurant2</li>
-                <li> location2</li>
-              </ul>
-              <br></br>
-              <ul>
-                <li>restaurant3</li>
-                <li> location3</li>
-              </ul>
-              <br></br>
-              <ul>
-                <li>restaurant4</li>
-                <li> location4</li>
-              </ul>
-              <br></br>
-              <ul>
-                <li>restaurant5</li>
-                <li> location5</li>
+                      <li key={key}>{value.location.address1}</li>
+                      <br></br>
+                    </div>
+                  })
+                }
               </ul>
              
             </div>
             <div className="details">
             <h1>Restaurant Information:</h1>
               <hr></hr>
+
               <ul>
-                <li>restaurant1</li>
-                <li>Phone Number: </li>
-                <li>Rating: </li>
-                <li>Price:</li>
-                <li>Reviews:</li>
+                {
+                  this.state.list.map((value,key) => {
+                    return<div>
+                      <li key={key}>{value.name}</li>
+                      <li key={key}>Type: {value.categories[0].title}</li>
+                      <li key={key}>Phone Number: {value.display_phone}</li>
+                      <li key={key}>Rating: {value.rating}</li>
+                      <li key={key}>Distance: {value.distance}</li>
+                      <li key={key}>Reviews:</li>
+                      <hr></hr>
+                    </div>
+                  })
+                }
               </ul>
-              <hr></hr>
-              <ul>
-                <li>restaurant2</li>
-                <li>Phone Number: </li>
-                <li>Rating: </li>
-                <li>Price:</li>
-                <li>Reviews:</li>
-              </ul>
-              <hr></hr>
-              <ul>
-                <li>restaurant3</li>
-                <li>Phone Number: </li>
-                <li>Rating: </li>
-                <li>Price:</li>
-                <li>Reviews:</li>
-              </ul>
-              <hr></hr>
-              <ul>
-                <li>restaurant4</li>
-                <li>Phone Number: </li>
-                <li>Rating: </li>
-                <li>Price:</li>
-                <li>Reviews:</li>
-              </ul>
-              <hr></hr>
-              <ul>
-                <li>restaurant5</li>
-                <li>Phone Number: </li>
-                <li>Rating: </li>
-                <li>Price:</li>
-                <li>Reviews:</li>
-              </ul>
+
+               
             </div>
           </div>
 		  
-          {/* <Restaurant /> */}
         </div>
       )
   }
