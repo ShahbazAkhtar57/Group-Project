@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import Geocode from "react-geocode"
 import mapStyles from "./mapStyles";
+import Card from "./card-class";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import axios from "axios";
 Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
@@ -37,7 +38,7 @@ export default class Map extends Component
         this.state = {
             param:this.props.param,
             address: "",
-	    list:[],
+            list:[],
             mapPosition: {
               lat: this.props.center.lat,
               lng: this.props.center.lng
@@ -86,7 +87,8 @@ export default class Map extends Component
 
             .then((res) => {
               console.log(res.data)
-	      this.setState({
+              console.log(res.data.businesses[0].id)
+              this.setState({
                 list:res.data.businesses
                 })
             })
@@ -143,7 +145,7 @@ onMarkerDragEnd=(event)=>
           else do nothing 
       */
 
-      if ( this.state.mapPosition !== nextState.mapPosition  || this.state.list !== nextState.list)
+      if ( this.state.mapPosition !== nextState.mapPosition || this.state.list !== nextState.list)
       {
         return true
       } else if ( this.state.mapPosition === nextState.mapPosition)
@@ -151,6 +153,21 @@ onMarkerDragEnd=(event)=>
         return false
       }
     }
+
+    createCard =(data)=> {
+      return (
+        <Card
+          img = {data.image_url}
+          name = {data.name}
+          location = {data.location.address1}
+          type = {data.categories[0].title}
+          rating = {data.rating}
+          tel = {data.display_phone}
+          distance = {data.distance}
+        />
+      )
+    }
+
 
     /*
         Renders the Map with the options provided
@@ -196,6 +213,7 @@ onMarkerDragEnd=(event)=>
 				/>
         </div>
       }
+      
       return (
         <div>
 
@@ -207,48 +225,13 @@ onMarkerDragEnd=(event)=>
            </nav>
           {map}
 
-          <div className = "resList">
-            <div className = "list">
-              <h1>Restaurant List</h1>
-	      <hr></hr>
-  	       <ul>
-                {
-                  this.state.list.map((value,key) => {
-                    return<div>
-                      <li key={key}>{value.name}</li>
-
-                      <li key={key}>{value.location.address1}</li>
-                      <br></br>
-                    </div>
-                  })
-                }
-              </ul>
-             
-            </div>
-            <div className="details">
-            <h1>Restaurant Information:</h1>
-              <hr></hr>
-
-              <ul>
-                {
-                  this.state.list.map((value,key) => {
-                    return<div>
-                      <li key={key}>{value.name}</li>
-                      <li key={key}>Type: {value.categories[0].title}</li>
-                      <li key={key}>Phone Number: {value.display_phone}</li>
-                      <li key={key}>Rating: {value.rating}</li>
-                      <li key={key}>Distance: {value.distance}</li>
-                      <li key={key}>Reviews:</li>
-                      <hr></hr>
-                    </div>
-                  })
-                }
-              </ul>
-
-               
-            </div>
-          </div>
-		  
+          {/* return the specific restaurant details */}
+          <br></br>
+          <br></br>
+          <br></br>
+          {this.state.list.map(this.createCard)}
+          
+          
         </div>
       )
   }

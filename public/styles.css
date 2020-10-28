@@ -15,7 +15,14 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/food.png");
 }
 
-.locinfo {
+.heading {
+  text-align: center;
+  font-size: 2em;
+  color: #2d3436;
+  margin: 20px 0 30px;
+}
+
+/* .locinfo {
  
   display: flex;
   border: 6px solid #eee; 
@@ -32,58 +39,13 @@ body {
   height:100%;
   background:#dba84a;
   flex:none;
-}
-
-.resList {
-  display: flex;
-  border: 6px solid #eee; 
-  border-radius: 0.6rem; 
-  width:80%;
-  height:400px;
-  margin: 100px auto;
-  text-align: center;
-
-}
-
-.list {
-  width:50%; 
-  height:100%;
-  background:#dba84a;
-  flex:none;
-  overflow:auto;
-}
+} 
 
 .list li {
   list-style: none;
   font-size:1.25rem;
  
-}
-
-.bts-more {
-  width:70px;
-  height:35px;
- 
-}
-
-.details {
-  height:100%;
-  width: 50%;
-  background:green;
-  flex:none;    
-  overflow:auto;
-}
-
-.details li {
-  list-style: none;
-  text-align: left;
-}
-
-.right{
-  height:100%;
-  width: 50%;
-  background:green;
-  flex:none;        
-}
+}*/
 
 
 .container {
@@ -204,3 +166,62 @@ button {
 {
   background-color: lightblue;
 }
+
+.card {
+  width:800px;
+  margin:30px auto;
+  background-color:white;
+  box-shadow:0 5px 20px #999;
+}
+.card a {
+  color:#333;
+  text-decoration:none;
+}
+.card:hover .card-image img {
+  width:160%;
+  filter:grayscale(0);
+}
+
+.card-image {
+  height:250px;
+  position:relative;
+  overflow:hidden;
+}
+.card-image img {
+  width:150%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  filter:grayscale(1);
+  transition-property:filter width;
+  transition-duration:.3s;
+  transition-timing-function:ease;
+}
+.card-body {
+ text-align:center;
+ padding: 15px 20px;
+
+}
+
+
+.card-date {
+  text-align:center;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #50a3a2;
+ 
+}
+
+.title {
+  color:#50a3a2;
+  font-family: 'Playfair Display', serif;
+  text-align:center;
+  text-transform:uppercase;
+  font-weight: bold;
+}
+
+.more {
+  font-family: 'Playfair Display', serif;
+  color:#50a3a2;
+}
+
