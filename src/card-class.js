@@ -1,21 +1,28 @@
 import React, {Component} from "react";
+import Dialog from "./Dialog";
+import axios from "axios";
 
-export default class NewLocation extends Component {
+export default class Card extends Component {
     constructor(props){
         super(props);
         this.state = {
-           
+            id: props.id,
             img:props.img,
             name: props.name,
             location: props.location,
             type: props.type,
             tel: props.tel,
             rating: props.rating,
-            distance: props.distance
+            distance: props.distance,
+            isOpen: false,
+            
         }
     }
 
+
+    
   render() {
+
 
     var newD = this.state.distance.toString();
     var str = "";
@@ -28,9 +35,8 @@ export default class NewLocation extends Component {
             break;
         }
     }
-    console.log("Distance", str);
- 
-
+   
+    
 
       return (
         <div class="card">
@@ -53,7 +59,24 @@ export default class NewLocation extends Component {
                 <p className="more"> Tel: {this.state.tel}</p>
                 <p className="more"> Rating: <span role="img" aria-label="star">⭐️</span> {this.state.rating} </p>
                 <p className="more"> Distance: {str} meters</p>
+                <br></br>
                 
+                <div>
+                    <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
+                   
+                    <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
+                        <h1>Review1</h1>
+                        <h2>This is the  Review This is the Review This is the  Review  </h2>
+                        <br></br>
+                        <h1>Review2</h1>
+                        <h2>This is the  Review This is the Review This is the  Review </h2>
+                        <br></br>
+                        <h1>Review3</h1>
+                        <h2>This is the Review This is the Review This is the Review </h2>
+                        <br></br>
+                    </Dialog>
+                    
+                </div>
             </div>
         </div>
 

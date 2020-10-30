@@ -17,7 +17,7 @@ let category = "Food"
 const mapContainerStyle = {
   width: "100%",
   height: "800px",
-  margin: "30px auto"
+  margin: "0 auto"
 };
 
 /*
@@ -86,8 +86,6 @@ export default class Map extends Component
             */
 
             .then((res) => {
-              console.log(res.data)
-              console.log(res.data.businesses[0].id)
               this.setState({
                 list:res.data.businesses
                 })
@@ -98,7 +96,7 @@ export default class Map extends Component
             */
            
             .catch((err) => {
-              console.log ('Restaurant Search Error')
+              console.log (err)
             })
         },
 
@@ -157,6 +155,7 @@ onMarkerDragEnd=(event)=>
     createCard =(data)=> {
       return (
         <Card
+          id = {data.id}
           img = {data.image_url}
           name = {data.name}
           location = {data.location.address1}
@@ -215,16 +214,19 @@ onMarkerDragEnd=(event)=>
       }
       
       return (
+
         <div>
+          
+            
+              <nav>
+                <ul>
+                  <li><a href = "/">Food4You</a></li>
+                  <li><a href ="/">New Location</a></li>
+                </ul>
+              </nav>
+              {map}
 
-          <nav>
-             <ul>
-               <li><a href = "/">Food4You</a></li>
-               <li><a href ="/">New Location</a></li>
-             </ul>
-           </nav>
-          {map}
-
+            
           {/* return the specific restaurant details */}
           <br></br>
           <br></br>

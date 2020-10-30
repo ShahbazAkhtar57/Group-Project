@@ -47,7 +47,6 @@ body {
  
 }*/
 
-
 .container {
   margin: auto;
   padding: 80px 0;
@@ -168,7 +167,7 @@ button {
 }
 
 .card {
-  width:800px;
+  width:600px;
   margin:30px auto;
   background-color:white;
   box-shadow:0 5px 20px #999;
@@ -223,5 +222,15 @@ button {
 .more {
   font-family: 'Playfair Display', serif;
   color:#50a3a2;
+}
+
+.primary-btn {
+  background-color:#50a3a2;
+  color:white;
+  width: 100px;
+  height: 40px;
+  border:0;
+  font-size: 16px;			
+  border-radius: 30px;
 }
 
