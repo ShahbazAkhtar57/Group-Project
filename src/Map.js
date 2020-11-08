@@ -30,6 +30,7 @@ const options = {
   zoomControl: true,
 }
 
+
 export default class Map extends Component 
 {
 
@@ -49,6 +50,7 @@ export default class Map extends Component
             },
       }
   }
+
 
     /*
         Runs when Map is loaded

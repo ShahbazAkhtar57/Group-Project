@@ -19,16 +19,51 @@ export default class NewLocation extends Component {
 
     return (
       <div>
+
         <div className="jumbotron">
+          <h1 className="display-3">Food 4 You!</h1>
+          <hr />
+          <p >Finding food around your location！</p>
+
+        </div>
+
+        <div className="loc-image">
+
+          <ul className="img-list">
+              <div className = "mid">
+              <img  src="https://media.olivegarden.com/en_us/images/product/lasagna-fritta-dpv-590x365.jpg" />
+              </div>
+              <div className = "mid">
+              <img  src="https://www.middletonplace.org/assets/img/restaurant-intro-3.jpg" />
+             </div>
+              <div className = "mid">
+              <img  src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/07/14/Photos/Processed/iStockphoto-kqbD--621x414@LiveMint.jpg" />
+             </div>
+              <div className = "mid">
+              <img  src="https://www.austinchronicle.com/binary/2daf/food_feature1.jpg" />
+              </div>
+              
+             
+          </ul>
+          
+        </div>
+
+
+        
+        {/* <div className="jumbotron">
           <h1 className="display-3">Food 4 You!</h1>
           <hr />
           <p className="lead">Finding food around your location！</p>
 
-        </div>
+        </div> */}
         <div className="container">
+          
 
           <h1>My Location</h1>
-
+          
+          <h2 style={{color:"black"}}>Enter your current location here!</h2>
+        
+          <br></br>
           <form>
 
             <input

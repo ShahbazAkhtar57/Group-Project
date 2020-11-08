@@ -15,13 +15,51 @@ export default class Card extends Component {
             rating: props.rating,
             distance: props.distance,
             isOpen: false,
-            
+            username1:"",
+            username2:"",
+            username3:"",
+            text1:"",
+            text2:"",
+            text3:"",
+            time1:"",
+            time2:"",
+            time3:"",
         }
     }
+  
+componentDidMount () {
+//const[review,setReview] = this.state("")
 
+ axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.state.id}/reviews`, {
+  headers: {
+   Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
+},
 
+})
+       .then((res) => {
+              console.log(res.data)
+        //  setReview(res.data);
+           this.setState({
+                username1:res.data.reviews[0].user.name,
+                username2:res.data.reviews[1].user.name,
+                username3:res.data.reviews[2].user.name,
+                text1:res.data.reviews[0].text,
+                text2:res.data.reviews[1].text,
+                text3:res.data.reviews[2].text,
+               time1:res.data.reviews[0].time_created,
+               time2:res.data.reviews[1].time_created,
+               time2:res.data.reviews[2].time_created,
+
+                })
+             //   console.log(this.state.text1);    
+
+            //console.log(res.data.review[0].id)
+             
+            })    
+}
     
   render() {
+
 
 
     var newD = this.state.distance.toString();
@@ -36,7 +74,9 @@ export default class Card extends Component {
         }
     }
    
-    
+     
+
+
 
       return (
         <div class="card">
@@ -65,14 +105,14 @@ export default class Card extends Component {
                     <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
                    
                     <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
-                        <h1>Review1</h1>
-                        <h2>This is the  Review This is the Review This is the  Review  </h2>
+                        <h1>{this.state.username1}</h1>
+                        <h2>{this.state.text1}, {this.state.time1}</h2>
                         <br></br>
-                        <h1>Review2</h1>
-                        <h2>This is the  Review This is the Review This is the  Review </h2>
+                        <h1>{this.state.username2}</h1>
+                        <h2>{this.state.text2}, {this.state.time2}</h2>
                         <br></br>
-                        <h1>Review3</h1>
-                        <h2>This is the Review This is the Review This is the Review </h2>
+                        <h1>{this.state.username3}</h1>
+                        <h2>{this.state.text3}, {this.state.time3}</h2>
                         <br></br>
                     </Dialog>
                     
