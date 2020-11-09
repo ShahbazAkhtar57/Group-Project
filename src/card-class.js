@@ -38,7 +38,7 @@ componentDidMount () {
 })
        .then((res) => {
               console.log(res.data)
-        //  setReview(res.data);
+        //  gets the users reviews 
            this.setState({
                 username1:res.data.reviews[0].user.name,
                 username2:res.data.reviews[1].user.name,
@@ -51,11 +51,12 @@ componentDidMount () {
                time2:res.data.reviews[2].time_created,
 
                 })
-             //   console.log(this.state.text1);    
-
-            //console.log(res.data.review[0].id)
+           
              
             })    
+       .catch((err) => {
+              console.log (err)
+            })
 }
     
   render() {

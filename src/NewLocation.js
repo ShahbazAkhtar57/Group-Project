@@ -23,7 +23,7 @@ export default class NewLocation extends Component {
         <div className="jumbotron">
           <h1 className="display-3">Food 4 You!</h1>
           <hr />
-          <p >Finding food around your location！</p>
+          <p >Finding food near you！</p>
 
         </div>
 
