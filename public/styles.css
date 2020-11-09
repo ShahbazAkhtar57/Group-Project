@@ -98,6 +98,8 @@ body {
 
 .jumbotron h1 {
   margin-bottom: 0.5rem;
+  background-image: url("Group-project/foodlogo.png");
+
   font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   line-height: 1.2;
