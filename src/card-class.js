@@ -49,10 +49,12 @@ componentDidMount () {
                 text1:res.data.reviews[0].text,
                 text2:res.data.reviews[1].text,
                 text3:res.data.reviews[2].text,
-               time1:res.data.reviews[0].time_created,
-               time2:res.data.reviews[1].time_created,
-               time2:res.data.reviews[2].time_created,
-
+                time1:res.data.reviews[0].time_created,
+                time2:res.data.reviews[1].time_created,
+                time3:res.data.reviews[2].time_created,
+                rate1:res.data.reviews[0].rating,
+                rate2:res.data.reviews[1].rating,
+                rate3:res.data.reviews[2].rating,
                 })
            
              
