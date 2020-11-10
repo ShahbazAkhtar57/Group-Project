@@ -14,12 +14,11 @@ export default class MapPage extends Component {
 
     render() {
 		return(
-			<div style={{ margin: '100px' }}>
+			<div>
 				<Map
                     param={this.props.location.state.location}
 					//google={this.props.google}
 					center={{lat: 40.7128, lng: -74.0060}}
-					height='400px'
 					zoom={16}
 				/>
 			</div>

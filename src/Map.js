@@ -15,7 +15,7 @@ let category = "Food"
 */
 
 const mapContainerStyle = {
-  width: "100%",
+  width: "90%",
   height: "800px",
   margin: "0 auto"
 };
