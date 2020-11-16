@@ -9,28 +9,10 @@ export default class NewLocation extends Component {
     super(props);  
     this.state = {
     location: "",
-    latitude: "",
-    longitude: ""
     };
-    this.getLocation = this.getLocation.bind(this);
-    this.getCoordinates = this.getCoordinates.bind(this);
   }
 
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.getCoordinates);
-    } else {
-      console.log("Geolocation Disabled");
-    }
-  }
 
-  getCoordinates(position) {
-    console.log(position);
-    this.setState( {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude
-    })
-  }
 
   handleChange = (event) => {
     console.log(event.target.value);
@@ -100,9 +82,11 @@ export default class NewLocation extends Component {
           </form>
           <br />
 
-              <button onClick={this.getLocation}>Use GPS</button>
-              <p>Latitude: {this.state.latitude}</p>
-              <p>Longitude: {this.state.longitude}</p>
+              <Link to={     
+              {pathname: '/Map',
+               state:this.state,
+               geolocation: true
+              }}><button onClick={this.useGeolocation}>Use GPS</button></Link>
 
           <br></br>
 

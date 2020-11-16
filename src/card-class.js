@@ -111,26 +111,32 @@ componentDidMount () {
                     <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
                    
                     <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
+                        <div className="review">
                         <h2>Name:{this.state.username1}</h2>
                         <h3> Time: {this.state.time1} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate1}
                         </h3>
                         <h3 style={{color:"black"}}>{this.state.text1}</h3>
                         <br></br>
+                        </div>
 
+                        <div className="review">
                         <h2>Name:{this.state.username2}  </h2>
                         <h3>Time: {this.state.time2} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate2}
                         </h3>
                         <h3 style={{color:"black"}}>{this.state.text2}</h3>
                         <br></br>
-                        
+                        </div>
+
+                        <div className="review">
                         <h2>Name:{this.state.username3}</h2>
                         <h3>Time: {this.state.time3} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate3}
                         </h3>
                         <h3 style={{color:"black"}}>{this.state.text3}</h3>
                         <br></br>
+                        </div>
                     </Dialog>
                     
                 </div>
