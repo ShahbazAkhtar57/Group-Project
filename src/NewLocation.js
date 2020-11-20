@@ -38,16 +38,16 @@ export default class NewLocation extends Component {
 
           <ul className="img-list">
               <div className = "mid">
-              <img  alt="food1" src="https://media.olivegarden.com/en_us/images/product/lasagna-fritta-dpv-590x365.jpg" />
+              <img  alt="food1" src="https://i.pinimg.com/originals/a7/cf/28/a7cf28293fc4ff9cfd8a31b228193fd9.jpg" />
               </div>
               <div className = "mid">
-              <img  alt="food2" src="https://www.middletonplace.org/assets/img/restaurant-intro-3.jpg" />
+              <img  alt="food2" src="https://cdn1.img.sputnik.md/images/2082/08/20820866.jpg" />
              </div>
               <div className = "mid">
-              <img  alt="food3" src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/07/14/Photos/Processed/iStockphoto-kqbD--621x414@LiveMint.jpg" />
+              <img  alt="food3" src="https://imageproxy.themaven.net//https%3A%2F%2Fimages.saymedia-content.com%2F.image%2FMTc0NDI4MzIzNjg0ODIwNjE0%2Ffilet-mignon-side-dishes.jpg" />
              </div>
               <div className = "mid">
-              <img  alt="food4" src="https://www.austinchronicle.com/binary/2daf/food_feature1.jpg" />
+              <img  alt="food4" src="https://i.pinimg.com/originals/0b/53/5e/0b535e2ec3f4f6330596282a164f66bf.jpg" />
               </div>
               
              
