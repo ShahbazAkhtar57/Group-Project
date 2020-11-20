@@ -96,7 +96,7 @@ export default class NewLocation extends Component {
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <span style={{color:"black"}}>{suggestion.description}</span>
                   </div>
                 );
               })}
