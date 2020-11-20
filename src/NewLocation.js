@@ -1,29 +1,30 @@
 
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 export default class NewLocation extends Component {
 
   constructor (props) {
     super(props);  
-    this.state = {
-    location: "",
-    };
+    this.state = {location:''};
   }
 
 
-
-  handleChange = (event) => {
-    console.log(event.target.value);
-    this.setState({ location: event.target.value });
-  }
-
-
-
+ handleChange = location => {
+    this.setState({ location});
+  };
+ 
+  handleSelect = location => {
+      this.setState({ location})
+  };
   render() {
 
     return (
+
       <div>
 
         <div className="jumbotron">
@@ -65,14 +66,44 @@ export default class NewLocation extends Component {
         
           <br></br>
           <form>
-
+            <PlacesAutocomplete 
+            value={this.state.location}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+             >
+           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
             <input
-              onChange={this.handleChange}
-              type="text"
-              placeholder="Where's your location?"
-              value={this.state.location}
-              required />
-            
+              {...getInputProps({
+                placeholder: 'Search Places ...'
+                //className: 'lt',
+              })}
+            />
+             <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#blue', cursor: 'pointer' }
+                  : { backgroundColor: '#blue', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
             <br></br>
             <Link to={     
               {pathname: '/Map',
@@ -80,6 +111,7 @@ export default class NewLocation extends Component {
               }}><button type="submit">Submit</button></Link>
 
           </form>
+   
           <br />
 
               <Link to={     
@@ -92,8 +124,6 @@ export default class NewLocation extends Component {
 
         </div>
       </div>
-
-
 
     );
   }

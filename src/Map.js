@@ -235,6 +235,7 @@ export default class Map extends Component
           rating = {data.rating}
           tel = {data.display_phone}
           distance = {data.distance}
+          menu = {data.url}
         />
       )
     }

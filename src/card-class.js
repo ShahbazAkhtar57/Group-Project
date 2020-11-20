@@ -27,6 +27,7 @@ export default class Card extends Component {
             rate1:"",
             rate2:"",
             rate3:"",
+            review_err: false,
         }
     }
   
@@ -61,12 +62,15 @@ componentDidMount () {
             })    
        .catch((err) => {
               console.log (err)
+              this.setState({
+                  review_err: true
+              })
             })
 }
     
   render() {
 
-
+    // get the string of distance
 
     var newD = this.state.distance.toString();
     var str = "";
@@ -79,8 +83,64 @@ componentDidMount () {
             break;
         }
     }
+
+    //create the rating string in the emoji format 
+
+    var rating_str1 = "";
+    var rating_num1 = this.state.rate1;
+    for(let x = 0; x < rating_num1; x++){
+        rating_str1 += "⭐️";
+    }
+
+    var rating_str2 = "";
+    var rating_num2 = this.state.rate2;
+    for(let x = 0; x < rating_num2; x++){
+        rating_str2 += "⭐️";
+    }
+
+    var rating_str3 = "";
+    var rating_num3 = this.state.rate3;
+    for(let x = 0; x < rating_num3; x++){
+        rating_str3 += "⭐️";
+    }
+
+
+    var rest_rating_str = "";
+    var rest_rating_num = this.state.rating;
+    for(let x=0; x < rest_rating_num; x++) {
+        rest_rating_str += "⭐️";
+    }
+
+    //show N/A for the empty tel string
+
+    var tel = "";
+    if(this.state.tel === "") {
+        tel = "N/A";
+    }
+    else {
+        tel = this.state.tel;
+    }
+
+    //create the date string without the specific time
+    
+    var date1 = "";
+    var time1 = this.state.time1;
+    for(let y=0; y < 10; y++){
+        date1 += time1[y];
+    }
    
-     
+    var date2 = "";
+    var time2 = this.state.time2;
+    for(let y=0; y < 10; y++){
+        date2 += time2[y];
+    }
+   
+    var date3 = "";
+    var time3 = this.state.time3;
+    for(let y=0; y < 10; y++){
+        date3 += time3[y];
+    }
+   
 
 
 
@@ -102,8 +162,8 @@ componentDidMount () {
                     {this.state.location}
                 </h2>
                 <p className="more"> Type: {this.state.type} </p>
-                <p className="more"> Tel: {this.state.tel}</p>
-                <p className="more"> Rating: <span role="img" aria-label="star">⭐️</span> {this.state.rating} </p>
+                <p className="more"> Tel: {tel}</p>
+                <p className="more"> Rating: <span role="img" aria-label="star">{rest_rating_str}</span> </p>
                 <p className="more"> Distance: {str} meters</p>
                 <br></br>
                 
@@ -111,32 +171,41 @@ componentDidMount () {
                     <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
                    
                     <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
-                        <div className="review">
-                        <h2>Name:{this.state.username1}</h2>
-                        <h3> Time: {this.state.time1} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate1}
-                        </h3>
-                        <h3 style={{color:"black"}}>{this.state.text1}</h3>
-                        <br></br>
-                        </div>
 
-                        <div className="review">
-                        <h2>Name:{this.state.username2}  </h2>
-                        <h3>Time: {this.state.time2} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate2}
-                        </h3>
-                        <h3 style={{color:"black"}}>{this.state.text2}</h3>
-                        <br></br>
-                        </div>
 
-                        <div className="review">
-                        <h2>Name:{this.state.username3}</h2>
-                        <h3>Time: {this.state.time3} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        Rating:<span role="img" aria-label="star">⭐️</span>{this.state.rate3}
-                        </h3>
-                        <h3 style={{color:"black"}}>{this.state.text3}</h3>
-                        <br></br>
-                        </div>
+
+                       { this.state.review_err === false ?
+                       (  <div>
+                            <div className="review">
+                            <h2>Name:{this.state.username1}</h2>
+                            <h3>Date: {date1} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                Rating:<span role="img" aria-label="star">{rating_str1}</span>
+                            
+                            </h3>
+                            <h3 style={{color:"black"}}>{this.state.text1}</h3>
+                            <br></br>
+                            </div>
+
+                            <div className="review">
+                            <h2>Name:{this.state.username2}  </h2>
+                            <h3>Date: {date2} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                Rating:<span role="img" aria-label="star">{rating_str2}</span>
+                            
+                            </h3>
+                            <h3 style={{color:"black"}}>{this.state.text2}</h3>
+                            <br></br>
+                            </div>
+
+                            <div className="review">
+                            <h2>Name:{this.state.username3}</h2>
+                            <h3>Date: {date3} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            Rating:<span role="img" aria-label="star">{rating_str3}</span>
+                            
+                            </h3>
+                            <h3 style={{color:"black"}}>{this.state.text3}</h3>
+                            <br></br>
+                            </div>
+                        </div>) : (<h2 styles={{textAlign:"center"}}> Sorry, there is no review.</h2>)}
                     </Dialog>
                     
                 </div>
