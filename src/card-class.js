@@ -14,6 +14,7 @@ export default class Card extends Component {
             tel: props.tel,
             rating: props.rating,
             distance: props.distance,
+            menu: props.menu,
             isOpen: false,
             username1:"",
             username2:"",
@@ -166,13 +167,12 @@ componentDidMount () {
                 <p className="more"> Rating: <span role="img" aria-label="star">{rest_rating_str}</span> </p>
                 <p className="more"> Distance: {str} meters</p>
                 <br></br>
-                
+                <a className="menu" style={{color:"white"}} href={this.state.menu}>Website</a>
+               
                 <div>
                     <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
                    
                     <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
-
-
 
                        { this.state.review_err === false ?
                        (  <div>

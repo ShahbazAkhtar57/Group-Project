@@ -313,7 +313,7 @@ button {
   background-color:#50a3a2;
   color:white;
   border-radius: 0.6rem;
-  margin: 10px;
+  margin: 6px;
 }
 
 .info {
@@ -322,5 +322,24 @@ button {
   left: 0;
  
 }
+
+.menu {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  display:inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 8px;
+  background-color:#50a3a2;
+  color:white;
+  width: 100px;
+  height: 40px;
+  border:0;
+  font-size: 18px;			
+  border-radius: 30px;
+  font-family: 'Playfair Display', serif;
+}
+
+
 
 
