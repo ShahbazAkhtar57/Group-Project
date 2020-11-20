@@ -22,30 +22,7 @@ body {
   margin: 20px 0 30px;
 }
 
-/* .locinfo {
- 
-  display: flex;
-  border: 6px solid #eee; 
-  border-radius: 0.6rem; 
-  width:50%;
-  height:600px;
-  margin: 50px auto;
-  text-align: center;
 
-}
-
-.left {
-  width:50%; 
-  height:100%;
-  background:#dba84a;
-  flex:none;
-} 
-
-.list li {
-  list-style: none;
-  font-size:1.25rem;
- 
-}*/
 
 .notify {
   text-align: center;
@@ -307,6 +284,7 @@ button {
   border:0;
   font-size: 16px;			
   border-radius: 30px;
+  margin: 10px;
 }
 
 .review {
