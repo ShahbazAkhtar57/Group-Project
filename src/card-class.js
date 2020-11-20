@@ -167,9 +167,11 @@ componentDidMount () {
                 <p className="more"> Rating: <span role="img" aria-label="star">{rest_rating_str}</span> </p>
                 <p className="more"> Distance: {str} meters</p>
                 <br></br>
+                
+                <div className="restauant-btn">
                 <a className="menu" style={{color:"white"}} href={this.state.menu}>Website</a>
                
-                <div>
+                <div className="review-btn">
                     <button  className="primary-btn" onClick={(e) => this.setState({isOpen:true})}>Reviews</button>
                    
                     <Dialog isOpen = {this.state.isOpen} onClose={(e) => this.setState({ isOpen: false})}>
@@ -207,7 +209,7 @@ componentDidMount () {
                             </div>
                         </div>) : (<h2 styles={{textAlign:"center"}}> Sorry, there is no review.</h2>)}
                     </Dialog>
-                    
+                   </div> 
                 </div>
             </div>
         </div>
