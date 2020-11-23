@@ -2,8 +2,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
 } from 'react-places-autocomplete';
 
 export default class NewLocation extends Component {
