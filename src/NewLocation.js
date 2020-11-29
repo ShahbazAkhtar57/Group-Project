@@ -74,7 +74,7 @@ export default class NewLocation extends Component {
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...'
-                //className: 'lt',
+            
               })}
             />
              <div className="autocomplete-dropdown-container">
@@ -83,10 +83,12 @@ export default class NewLocation extends Component {
                 const className = suggestion.active
                   ? 'suggestion-item--active'
                   : 'suggestion-item';
-                // inline style for demonstration purpose
+                // inline style 
                 const style = suggestion.active
-                  ? { backgroundColor: '#blue', cursor: 'pointer' }
-                  : { backgroundColor: '#blue', cursor: 'pointer' };
+                  ? {  backgroundColor: '#FAAC23', 
+                    cursor: 'pointer' }
+                  : { backgroundColor: '#F3BE61', 
+                  cursor: 'pointer' };
                 return (
                   <div
                     {...getSuggestionItemProps(suggestion, {
