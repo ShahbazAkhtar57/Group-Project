@@ -84,7 +84,7 @@ export default class NewLocation extends Component {
           <div>
             <input
               {...getInputProps({
-                placeholder: 'Search Places ...'
+                placeholder: 'Search Places'
             
               })}
             />
@@ -116,13 +116,12 @@ export default class NewLocation extends Component {
         )}
       </PlacesAutocomplete>
 
-            <h2 style={{color:"black"}}>Enter the cuisine type!</h2>
-            <h4 style={{color:"black"}}>you can choose food for all cuisine types</h4>
+            <h2 style={{color:"black"}}>Enter the type of food you would like to eat!</h2>
             
             <input
                 onChange={this.handleFoodChange}
                 type="text"
-                placeholder="Cuisine Type"
+                placeholder="Food Type"
                 value={this.state.type}
                 list="type"
                />
@@ -169,6 +168,23 @@ export default class NewLocation extends Component {
                geolocation: true
               }}><button onClick={this.useGeolocation}>Use GPS</button></Link>
 
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
           <br></br>
 
         </div>

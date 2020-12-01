@@ -8,7 +8,6 @@ Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
 Geocode.enableDebug();
 
 let radius = 1600;
-let category = "Food"
 
 
 /*
@@ -17,7 +16,7 @@ let category = "Food"
 
 const mapContainerStyle = {
   width: "90%",
-  height: "400px",
+  height: "500px",
   margin: "0 auto",
   position:"fixed",
   left:"40px",
