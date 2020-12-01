@@ -8,7 +8,9 @@ export default class NewLocation extends Component {
 
   constructor (props) {
     super(props);  
-    this.state = {location:''};
+    this.state = {location:'',
+                  type: ''
+    }
   }
 
 
@@ -19,7 +21,16 @@ export default class NewLocation extends Component {
   handleSelect = location => {
       this.setState({ location})
   };
+
+  handleFoodChange = (event) => {
+   
+    this.setState({ type : event.target.value });
+    // console.log("The food type-------",this.state.type);
+  }
+
   render() {
+
+    console.log("The food type-------",this.state.type);
 
     return (
 
@@ -59,10 +70,10 @@ export default class NewLocation extends Component {
           
 
           <h1>My Location</h1>
+          <br></br>
           
           <h2 style={{color:"black"}}>Enter your current location here!</h2>
-        
-          <br></br>
+       
           <form>
             <PlacesAutocomplete 
             value={this.state.location}
@@ -87,7 +98,7 @@ export default class NewLocation extends Component {
                 const style = suggestion.active
                   ? {  backgroundColor: '#FAAC23', 
                     cursor: 'pointer' }
-                  : { backgroundColor: '#F3BE61', 
+                  : { backgroundColor: '#FFCC00', 
                   cursor: 'pointer' };
                 return (
                   <div
@@ -104,7 +115,45 @@ export default class NewLocation extends Component {
           </div>
         )}
       </PlacesAutocomplete>
-            <br></br>
+
+            <h2 style={{color:"black"}}>Enter the cuisine type!</h2>
+            <h4 style={{color:"black"}}>you can choose food for all cuisine types</h4>
+            
+            <input
+                onChange={this.handleFoodChange}
+                type="text"
+                placeholder="Cuisine Type"
+                value={this.state.type}
+                list="type"
+               />
+              <datalist id="type">
+                <option value="food">food</option>
+                <option value="bagels">bagels</option>  
+                <option value="bakeries">bakeries</option>
+                <option value="desserts">desserts</option> 
+                <option value="halal">halal</option>
+                <option value="chinese">chinese</option>
+                <option value="pizza">pizza</option>
+                <option value="donuts">donuts</option>
+                <option value="cafes">cafes</option>
+                <option value="macarons">macarons</option>
+                <option value="pretzels">pretzels</option>
+                <option value="greek">greek</option>
+                <option value="german">german</option>
+                <option value="italian">italian</option>
+                <option value="caribbean">caribbean</option>
+                <option value="mediterranean">mediterranean</option>
+                <option value="indian">indian</option>
+                <option value="turkish">turkish</option>
+                <option value="steakhouses">steakhouses</option>
+                <option value="delis">delis</option>
+                <option value="burgers">burgers</option>
+                <option value="sandwiches">sandwiches</option>
+                <option value="grocery">grocery</option> 
+                <option value="kebab">kebab</option>
+              </datalist>
+              <br></br>
+              
             <Link to={     
               {pathname: '/Map',
                state:this.state

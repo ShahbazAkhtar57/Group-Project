@@ -10,6 +10,7 @@ Geocode.enableDebug();
 let radius = 1600;
 let category = "Food"
 
+
 /*
     Map Size
 */
@@ -42,6 +43,7 @@ export default class Map extends Component
         super(props);
         this.state = {
             param:this.props.param,
+            type: this.props.type,
             address: "New York City Hall",
             geolocation: this.props.geolocation,
             list:[],
@@ -56,6 +58,7 @@ export default class Map extends Component
       }
       this.getLocation = this.getLocation.bind(this);
       this.getCoordinates = this.getCoordinates.bind(this);
+     
   }
 
   /*
@@ -100,7 +103,7 @@ export default class Map extends Component
       {
         this.getLocation();
 
-        let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+        let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
           headers: {
               Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
@@ -145,7 +148,7 @@ export default class Map extends Component
               After updating the Map, obtain nearby food locations based on the user's location
           */
           
-          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${category}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
           axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
@@ -260,8 +263,8 @@ export default class Map extends Component
                   position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}>
                 <InfoWindow>
                 <div style={{color:"black"}}>
-							   {this.state.address}
-							  </div>
+                 {this.state.address}
+                </div>
                 </InfoWindow>       
               </Marker>
             </GoogleMap>
@@ -278,15 +281,17 @@ export default class Map extends Component
       {
         map = <div>
           <AsyncMap
-					googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
-					loadingElement={<div style={mapContainerStyle}/>}
-					containerElement={<div style={mapContainerStyle}/>}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          loadingElement={<div style={mapContainerStyle}/>}
+          containerElement={<div style={mapContainerStyle}/>}
           mapElement={<div style={mapContainerStyle}/>}
-				/>
+        />
         </div>
       }
+
       
       return (
+
 
         <div>
           

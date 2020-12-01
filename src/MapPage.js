@@ -8,12 +8,14 @@ export default class MapPage extends Component {
         this.state = {
             param:props.location.state,
 			search:props.location.search,
-			geolocation: props.location.geolocation
+			geolocation: props.location.geolocation,
+			
         }
     }
 	
 
     render() {
+		console.log("The type is-----",this.props.location.state.type);
 		return(
 			<div>
 				<Map
@@ -21,6 +23,7 @@ export default class MapPage extends Component {
 					center={{lat: 40.7128, lng: -74.0060}}
 					zoom={16}
 					geolocation = {this.state.geolocation}
+					type={this.props.location.state.type}
 				/>
 			</div>
 		);

@@ -23,6 +23,8 @@ body {
 }
 .autocomplete-dropdown-container
 {
+  outline: none;
+  position:relative;
    margin: 0 auto;
    width: 15em; 
    line-height: 3; 
