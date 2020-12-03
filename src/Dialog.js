@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 let dialogStyles = {
     width: "800px",
-    height: "400px",
+    height: "510px",
     maxwidth: "100%",
     margin: "0 auto",
     position: "fixed",
