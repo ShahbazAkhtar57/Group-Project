@@ -7,7 +7,7 @@ import axios from "axios";
 Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
 Geocode.enableDebug();
 
-let radius = 1600;
+
 
 
 /*
@@ -43,6 +43,7 @@ export default class Map extends Component
         this.state = {
             param:this.props.param,
             type: this.props.type,
+            radius: this.props.radius,
             address: "New York City Hall",
             geolocation: this.props.geolocation,
             list:[],
@@ -59,6 +60,8 @@ export default class Map extends Component
       this.getCoordinates = this.getCoordinates.bind(this);
      
   }
+
+
 
   /*
       Obtains GPS Location of the user
@@ -102,7 +105,7 @@ export default class Map extends Component
       {
         this.getLocation();
 
-        let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+        let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${this.state.radius}&sort_by=distance`
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
           headers: {
               Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
@@ -147,7 +150,7 @@ export default class Map extends Component
               After updating the Map, obtain nearby food locations based on the user's location
           */
           
-          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${radius}&sort_by=distance`
+          let restaurant_search =  `https://api.yelp.com/v3/businesses/search?categories=${this.state.type}&limit=20&latitude=${this.state.mapPosition.lat}&longitude=${this.state.mapPosition.lng}&radius=${this.state.radius}&sort_by=distance`
           axios.get(`${'https://cors-anywhere.herokuapp.com/'}${restaurant_search}`, {
             headers: {
                 Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`
@@ -288,7 +291,7 @@ export default class Map extends Component
         </div>
       }
 
-      
+      console.log("The radius-------",this.state.radius);
       return (
 
 

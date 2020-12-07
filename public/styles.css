@@ -75,8 +75,8 @@ body {
   width:1250px;
   height:300px;
   margin: 0 auto; 
-  border: 6px solid black; 
-  border-radius: 0.6rem; 
+  /* border: 6px solid black; 
+  border-radius: 0.6rem;  */
  
 }
 .img-list {
@@ -335,4 +335,32 @@ button {
   display: inline-block;
 }
 
+.combo { 
+
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  background-color: rgba(252, 252, 252, 0.2);
+  width: 200px;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0 auto 30px auto;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  overflow: hidden; 
+  padding: 0; 
+  display: inline-block; 
+  white-space: nowrap; 
+  vertical-align: middle; 
+  } 
+ 
+  .combo .combo-text { 
+   font-size: 18px; 
+   border: 0px; 
+   line-height: 40px; 
+   height: 40px;  
+   margin: 0; 
+   padding: 0px 2px; 
+   vertical-align: baseline; 
+ } 
 

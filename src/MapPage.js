@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Map from './Map';
 
+
+
 export default class MapPage extends Component {
 
     constructor(props) {
@@ -15,7 +17,7 @@ export default class MapPage extends Component {
 	
 
     render() {
-		console.log("The type is-----",this.props.location.state.type);
+
 		return(
 			<div>
 				<Map
@@ -24,6 +26,7 @@ export default class MapPage extends Component {
 					zoom={16}
 					geolocation = {this.state.geolocation}
 					type={this.props.location.state.type}
+					radius={(this.props.location.state.radius * 1600)}
 				/>
 			</div>
 		);

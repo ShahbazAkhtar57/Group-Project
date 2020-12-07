@@ -9,7 +9,8 @@ export default class NewLocation extends Component {
   constructor (props) {
     super(props);  
     this.state = {location:'',
-                  type: ''
+                  type: '',
+                  radius:1
     }
   }
 
@@ -25,12 +26,22 @@ export default class NewLocation extends Component {
   handleFoodChange = (event) => {
    
     this.setState({ type : event.target.value });
-    // console.log("The food type-------",this.state.type);
+   
+  }
+
+  handleRadiusChange = (event) => {
+    
+    if(event.target.value !== 0) {
+      this.setState({radius: (event.target.value)});
+    }else {
+      this.setState({radius:1});
+    }
+    
   }
 
   render() {
 
-    console.log("The food type-------",this.state.type);
+    console.log("The radius-------",this.state.radius);
 
     return (
 
@@ -69,10 +80,10 @@ export default class NewLocation extends Component {
         <div className="container">
           
 
-          <h1>My Location</h1>
+          <h1 style={{fontSize:"50px"}}>My Location</h1>
           <br></br>
           
-          <h2 style={{color:"black"}}>Enter your current location here!</h2>
+          <h2 style={{color:"black", fontSize:"28px",fontFamily:"Georgia"}}>Current Location</h2>
        
           <form>
             <PlacesAutocomplete 
@@ -116,7 +127,7 @@ export default class NewLocation extends Component {
         )}
       </PlacesAutocomplete>
 
-            <h2 style={{color:"black"}}>Enter the type of food you would like to eat!</h2>
+            <h2 style={{color:"black", fontSize:"28px",fontFamily:"Georgia"}}>Cuisine Type</h2>
             
             <input
                 onChange={this.handleFoodChange}
@@ -129,28 +140,48 @@ export default class NewLocation extends Component {
                 <option value="food">food</option>
                 <option value="bagels">bagels</option>  
                 <option value="bakeries">bakeries</option>
-                <option value="desserts">desserts</option> 
-                <option value="halal">halal</option>
-                <option value="chinese">chinese</option>
-                <option value="pizza">pizza</option>
-                <option value="donuts">donuts</option>
-                <option value="cafes">cafes</option>
-                <option value="macarons">macarons</option>
-                <option value="pretzels">pretzels</option>
-                <option value="greek">greek</option>
-                <option value="german">german</option>
-                <option value="italian">italian</option>
-                <option value="caribbean">caribbean</option>
-                <option value="mediterranean">mediterranean</option>
-                <option value="indian">indian</option>
-                <option value="turkish">turkish</option>
-                <option value="steakhouses">steakhouses</option>
-                <option value="delis">delis</option>
+                <option value="bento">bento</option>
                 <option value="burgers">burgers</option>
-                <option value="sandwiches">sandwiches</option>
+                <option value="cafes">cafes</option>
+                <option value="caribbean">caribbean</option>
+                <option value="chinese">chinese</option>
+                <option value="churros">churros</option>
+                <option value="cupcakes">cupcakes</option>
+                <option value="desserts">desserts</option> 
+                <option value="donuts">donuts</option>
+                <option value="delis">delis</option>
+                <option value="empanadas">empanadas</option>
+                <option value="german">german</option> 
+                <option value="greek">greek</option>
                 <option value="grocery">grocery</option> 
+                <option value="halal">halal</option>
+                <option value="indian">indian</option>
+                <option value="italian">italian</option>
                 <option value="kebab">kebab</option>
+                <option value="macarons">macarons</option>
+                <option value="mediterranean">mediterranean</option>
+                <option value="pizza">pizza</option>
+                <option value="pretzels">pretzels</option>
+                <option value="sandwiches">sandwiches</option>
+                <option value="soup">soup</option>
+                <option value="spanish">spanish</option>
+                <option value="steakhouses">steakhouses</option>
+                <option value="thai">thai</option>
+                <option value="turkish">turkish</option>
               </datalist>
+
+
+              <h2 style={{color:"black", fontSize:"28px",fontFamily:"Georgia"}}>Radius</h2>
+              <span className="combo">
+              <input
+                className="combo combo-text"
+                onChange={this.handleRadiusChange}
+                type="number"
+                min="1"
+                value={this.state.radius}
+               />
+               </span>
+               <span style={{width:"50px", fontSize:"28px", color:"black", fontWeight:"bold"}}> mile</span>
               <br></br>
               
             <Link to={     
