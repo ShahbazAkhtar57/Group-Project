@@ -19,6 +19,9 @@ export default class MapPage extends Component {
     render() {
 
 		return(
+			/*
+				Creates a Map Component 
+			*/
 			<div>
 				<Map
                     param={this.props.location.state.location}

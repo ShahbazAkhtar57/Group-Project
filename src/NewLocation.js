@@ -192,6 +192,8 @@ export default class NewLocation extends Component {
           </form>
    
           <br />
+              
+              {/* GPS Location Button*/}
 
               <Link to={     
               {pathname: '/Map',
