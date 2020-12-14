@@ -6,7 +6,7 @@ Our App is a local food finder.  This app lists the multiple food options for a 
 Commands needed:
 ```
 npm install
- npm start
+npm start
 
 ```
 
